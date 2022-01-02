@@ -49,4 +49,13 @@ public class Client {
     public void setHasPaid(boolean hasPaid) {
         this.hasPaid = hasPaid;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", hasPaid=" + hasPaid +
+                '}';
+    }
 }
