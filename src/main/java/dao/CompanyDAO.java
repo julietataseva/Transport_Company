@@ -4,12 +4,20 @@ import entity.Company;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class CompanyDAO {
     public static void saveCompany(entity.Company company) {
         try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(company);
             transaction.commit();
+        }
+    }
+
+    public static List<Company> readCompanies() {
+        try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+            return session.createQuery("SELECT c FROM Company c", entity.Company.class).getResultList();
         }
     }
 
@@ -29,7 +37,7 @@ public class CompanyDAO {
         }
     }
 
-    public static Company getCompany(long id) {
+    public static Company getCompany(int id) {
         Company company;
         try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
