@@ -28,4 +28,14 @@ public class CompanyDAO {
             transaction.commit();
         }
     }
+
+    public static Company getCompany(long id) {
+        Company company;
+        try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            company = session.get(Company.class, id);
+            transaction.commit();
+        }
+        return company;
+    }
 }
