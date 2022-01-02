@@ -22,4 +22,46 @@ public class Vehicle {
     public enum VehicleType {
         BUS, TRUCK, TANK
     }
+
+    public Vehicle() {
+    }
+
+    public Vehicle(int id, VehicleType vehicleType, Company company) {
+        this.id = id;
+        this.vehicleType = vehicleType;
+        this.company = company;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public VehicleType getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(VehicleType vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", vehicleType=" + vehicleType +
+                ", company=" + company +
+                '}';
+    }
 }
