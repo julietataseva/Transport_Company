@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Client;
+import entity.Company;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -30,10 +31,22 @@ public class ClientDAO {
     }
 
     public static void deleteClient(Client client) {
+        if (client != null) {
+            try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+                Transaction transaction = session.beginTransaction();
+                session.delete(client);
+                transaction.commit();
+            }
+        }
+    }
+
+    public static Client getClient(int id) {
+        Client client;
         try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(client);
+            client = session.get(Client.class, id);
             transaction.commit();
         }
+        return client;
     }
 }
