@@ -30,10 +30,22 @@ public class DriverDAO {
     }
 
     public static void deleteDriver(Driver driver) {
+        if (driver != null) {
+            try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+                Transaction transaction = session.beginTransaction();
+                session.delete(driver);
+                transaction.commit();
+            }
+        }
+    }
+
+    public static Driver getDriver(int id) {
+        Driver driver;
         try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(driver);
+            driver = session.get(Driver.class, id);
             transaction.commit();
         }
+        return driver;
     }
 }
