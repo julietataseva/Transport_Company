@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,7 @@ public class Company {
     private String name;
 
     @Column(name = "income", nullable = false)
-    private double income;
+    private BigDecimal income;
 
     @OneToMany(mappedBy = "company")
     private List<Driver> drivers;
@@ -24,4 +25,45 @@ public class Company {
 
     @OneToMany(mappedBy = "company")
     private List<Vehicle> vehicles;
+
+    public Company() {
+    }
+
+    public Company(String name, BigDecimal income) {
+        this.name = name;
+        this.income = income;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public BigDecimal getIncome() {
+        return income;
+    }
+
+    public void setIncome(BigDecimal income) {
+        this.income = income;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", income=" + income +
+                '}';
+    }
 }
