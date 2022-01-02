@@ -20,4 +20,12 @@ public class CompanyDAO {
             transaction.commit();
         }
     }
+
+    public static void deleteCompany(Company company) {
+        try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(company);
+            transaction.commit();
+        }
+    }
 }
