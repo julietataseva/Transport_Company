@@ -30,10 +30,22 @@ public class TransportationDAO {
     }
 
     public static void deleteTransportation(Transportation transportation) {
+        if (transportation != null) {
+            try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+                Transaction transaction = session.beginTransaction();
+                session.delete(transportation);
+                transaction.commit();
+            }
+        }
+    }
+
+    public static Transportation getTransportation(int id) {
+        Transportation transportation;
         try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.delete(transportation);
+            transportation = session.get(Transportation.class, id);
             transaction.commit();
         }
+        return transportation;
     }
 }
