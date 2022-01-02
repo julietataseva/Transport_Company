@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class CompanyDAO {
-    public static void saveCompany(entity.Company company) {
+    public static void saveCompany(Company company) {
         try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(company);
@@ -30,10 +30,12 @@ public class CompanyDAO {
     }
 
     public static void deleteCompany(Company company) {
-        try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
-            Transaction transaction = session.beginTransaction();
-            session.delete(company);
-            transaction.commit();
+        if (company != null) {
+            try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+                Transaction transaction = session.beginTransaction();
+                session.delete(company);
+                transaction.commit();
+            }
         }
     }
 
