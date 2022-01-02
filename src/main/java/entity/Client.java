@@ -16,6 +16,37 @@ public class Client {
     @Column(name = "has_paid", nullable = false)
     private boolean hasPaid;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "clients")
     private Set<Transportation> transportations;
+
+    public Client() {
+    }
+
+    public Client(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isHasPaid() {
+        return hasPaid;
+    }
+
+    public void setHasPaid(boolean hasPaid) {
+        this.hasPaid = hasPaid;
+    }
 }
