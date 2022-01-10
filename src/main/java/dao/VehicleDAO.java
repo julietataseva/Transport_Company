@@ -8,10 +8,12 @@ import java.util.List;
 
 public class VehicleDAO {
     public static void saveVehicle(Vehicle vehicle) {
-        try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
-            Transaction transaction = session.beginTransaction();
-            session.save(vehicle);
-            transaction.commit();
+        if (vehicle != null) {
+            try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+                Transaction transaction = session.beginTransaction();
+                session.save(vehicle);
+                transaction.commit();
+            }
         }
     }
 
@@ -22,10 +24,12 @@ public class VehicleDAO {
     }
 
     public static void saveOrUpdateVehicle(Vehicle vehicle) {
-        try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
-            Transaction transaction = session.beginTransaction();
-            session.saveOrUpdate(vehicle);
-            transaction.commit();
+        if (vehicle != null) {
+            try (Session session = configuration.SessionFactoryUtil.getSessionFactory().openSession()) {
+                Transaction transaction = session.beginTransaction();
+                session.saveOrUpdate(vehicle);
+                transaction.commit();
+            }
         }
     }
 
