@@ -26,8 +26,7 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(int id, VehicleType vehicleType, Company company) {
-        this.id = id;
+    public Vehicle(VehicleType vehicleType, Company company) {
         this.vehicleType = vehicleType;
         this.company = company;
     }

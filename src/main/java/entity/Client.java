@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,14 +17,15 @@ public class Client {
     @Column(name = "has_paid", nullable = false)
     private boolean hasPaid;
 
-    @ManyToMany(mappedBy = "clients")
-    private Set<Transportation> transportations;
+    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
+    private Set<Transportation> transportations  = new HashSet<>();
 
     public Client() {
     }
 
     public Client(String name) {
         this.name = name;
+        this.hasPaid = false;
     }
 
     public int getId() {

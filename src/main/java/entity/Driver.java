@@ -34,8 +34,7 @@ public class Driver {
     public Driver() {
     }
 
-    public Driver(int id, String name, QualificationType qualificationType, BigDecimal salary, Company company) {
-        this.id = id;
+    public Driver(String name, QualificationType qualificationType, BigDecimal salary, Company company) {
         this.name = name;
         this.qualificationType = qualificationType;
         this.salary = salary;

@@ -2,8 +2,10 @@ package entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Entity
 @Table(name = "transportation")
@@ -19,10 +21,10 @@ public class Transportation {
     private String endPoint;
 
     @Column(name = "date_of_departure", nullable = false)
-    private LocalDate dateOfDeparture;
+    private LocalDateTime dateOfDeparture;
 
     @Column(name = "date_of_arrival", nullable = false)
-    private LocalDate dateOfArrival;
+    private LocalDateTime dateOfArrival;
 
     @Column(name = "transportation_type", nullable = false)
     private TransportationType transportationType;
@@ -42,8 +44,15 @@ public class Transportation {
     @ManyToOne
     private Vehicle vehicle;
 
-    @ManyToMany
-    private Set<Client> clients;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "transportation_client",
+            joinColumns = {
+                    @JoinColumn(name = "transportations_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "clients_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)})
+    private Set<Client> clients = new HashSet<>();
 
     public enum TransportationType {
         STOCK, PASSENGERS
@@ -52,11 +61,10 @@ public class Transportation {
     public Transportation() {
     }
 
-    public Transportation(int id, String startPoint, String endPoint,
-                          LocalDate dateOfDeparture, LocalDate dateOfArrival,
+    public Transportation(String startPoint, String endPoint,
+                          LocalDateTime dateOfDeparture, LocalDateTime dateOfArrival,
                           TransportationType transportationType, BigDecimal weight,
                           BigDecimal price, Company company, Driver driver, Vehicle vehicle) {
-        this.id = id;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.dateOfDeparture = dateOfDeparture;
@@ -93,19 +101,19 @@ public class Transportation {
         this.endPoint = endPoint;
     }
 
-    public LocalDate getDateOfDeparture() {
+    public LocalDateTime getDateOfDeparture() {
         return dateOfDeparture;
     }
 
-    public void setDateOfDeparture(LocalDate dateOfDeparture) {
+    public void setDateOfDeparture(LocalDateTime dateOfDeparture) {
         this.dateOfDeparture = dateOfDeparture;
     }
 
-    public LocalDate getDateOfArrival() {
+    public LocalDateTime getDateOfArrival() {
         return dateOfArrival;
     }
 
-    public void setDateOfArrival(LocalDate dateOfArrival) {
+    public void setDateOfArrival(LocalDateTime dateOfArrival) {
         this.dateOfArrival = dateOfArrival;
     }
 
@@ -155,6 +163,14 @@ public class Transportation {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
 
     @Override
