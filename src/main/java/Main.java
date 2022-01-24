@@ -10,16 +10,18 @@ import java.util.List;
 public class Main {
 
     public static void main(String args[]) {
-        /*
-        Company company1 = new Company("Zara", BigDecimal.valueOf(100000));
-        CompanyDAO.saveOrUpdateCompany(company1);
 
-        Company company2 = new Company("Orange", BigDecimal.valueOf(90000));
-        CompanyDAO.saveOrUpdateCompany(company2);
+//        Company company1 = new Company("Mango", BigDecimal.valueOf(1000000));
+//        CompanyDAO.saveOrUpdateCompany(company1);
+//
+//        Company company2 = new Company("Ciela", BigDecimal.valueOf(90000));
+//        CompanyDAO.saveOrUpdateCompany(company2);
+//
+//        Company company3 = new Company("Zoo market", BigDecimal.valueOf(70000));
+//        CompanyDAO.saveOrUpdateCompany(company3);
 
-        Company company3 = new Company("Pet Store", BigDecimal.valueOf(60000));
-        CompanyDAO.saveOrUpdateCompany(company3);
-        */
+//        Company company4 = new Company("", BigDecimal.valueOf(70000));
+//        CompanyDAO.saveOrUpdateCompany(company4);
 
 //        Company company = CompanyDAO.getCompany(5);
 //        if (company != null) {
@@ -28,17 +30,21 @@ public class Main {
 
 //        CompanyDAO.deleteCompany(company);
 
-//        List<Company> companiesFilteredByName = CompanyDAO.filterByName("Pay Safe");
-//        companiesFilteredByName.stream().forEach(System.out::println);
+        List<Company> companiesFilteredByName = CompanyDAO.filterByName("Pay Safe");
+        System.out.println("---------  Companies filtered by name ----------");
+        companiesFilteredByName.stream().forEach(System.out::println);
 
-//        List<Company> companiesFilteredByIncome = CompanyDAO.filterByIncome(BigDecimal.valueOf(10000));
-//        companiesFilteredByIncome.stream().forEach(System.out::println);
+        List<Company> companiesFilteredByIncome = CompanyDAO.filterByIncome(BigDecimal.valueOf(10000));
+        System.out.println("---------  Companies filtered by income ----------");
+        companiesFilteredByIncome.stream().forEach(System.out::println);
 
-//        List<Company> companiesSortedByName = CompanyDAO.sortByName();
-//        companiesSortedByName.stream().forEach(System.out::println);
+        List<Company> companiesSortedByName = CompanyDAO.sortByName();
+        System.out.println("---------  Companies sorted by name ----------");
+        companiesSortedByName.stream().forEach(System.out::println);
 
-//        List<Company> companiesSortedByIncome = CompanyDAO.sortByIncome();
-//        companiesSortedByIncome.stream().forEach(System.out::println);
+        List<Company> companiesSortedByIncome = CompanyDAO.sortByIncome();
+        System.out.println("---------  Companies sorted by income ----------");
+        companiesSortedByIncome.stream().forEach(System.out::println);
 
 //        Company company1 = CompanyDAO.getCompany(1);
 //        Driver driver1 = new Driver("Ivan Ivanov", Driver.QualificationType.TRANSPORTATION_OF_MORE_THAN_12_PEOPLE, BigDecimal.valueOf(2000), company1);
@@ -52,7 +58,7 @@ public class Main {
 //        Driver driver3 = new Driver("Dimityr Dimitrov", Driver.QualificationType.LEGAL_CAPACITY_TO_TRANSPORT_SPECIAL_CARGO, BigDecimal.valueOf(6000), company3);
 //        DriverDAO.saveOrUpdateDriver(driver3);
 //
-//        Driver driver4 = new Driver("Ivan Dimitrov", Driver.QualificationType.TRANSPORTATION_OF_MORE_THAN_12_PEOPLE, BigDecimal.valueOf(4000), company3);
+//        Driver driver4 = new Driver("Dimityr Dimitrov", Driver.QualificationType.TRANSPORTATION_OF_MORE_THAN_12_PEOPLE, BigDecimal.valueOf(4000), company3);
 //        DriverDAO.saveOrUpdateDriver(driver4);
 //
 //        Driver driver5 = new Driver("Petyr Ivanov", Driver.QualificationType.LEGAL_CAPACITY_TO_TRANSPORT_SPECIAL_CARGO, BigDecimal.valueOf(6000), company3);
@@ -65,17 +71,21 @@ public class Main {
 //        Driver driver7 = new Driver("Ivaylo Petrov", Driver.QualificationType.LEGAL_CAPACITY_TO_TRANSPORT_SPECIAL_CARGO, BigDecimal.valueOf(4000), company4);
 //        DriverDAO.saveOrUpdateDriver(driver7);
 
-//        List<Driver> driversFilteredByQualificationType = DriverDAO.filterByQualificationType(Driver.QualificationType.TRANSPORTATION_OF_MORE_THAN_12_PEOPLE);
-//        driversFilteredByQualificationType.stream().forEach(System.out::println);
+        List<Driver> driversFilteredByQualificationType = DriverDAO.filterByQualificationType(Driver.QualificationType.TRANSPORTATION_OF_MORE_THAN_12_PEOPLE);
+        System.out.println("---------  Drivers filtered by qualification type ----------");
+        driversFilteredByQualificationType.stream().forEach(System.out::println);
 
-//        List<Driver> driversFilteredBySalary = DriverDAO.filterBySalary(BigDecimal.valueOf(6000));
-//        driversFilteredBySalary.stream().forEach(System.out::println);
+        List<Driver> driversFilteredBySalary = DriverDAO.filterBySalary(BigDecimal.valueOf(6000));
+        System.out.println("---------  Drivers filtered by salary ----------");
+        driversFilteredBySalary.stream().forEach(System.out::println);
 
-//        List<Driver> driversSortedByQualificationType = DriverDAO.sortByQualificationType();
-//        driversSortedByQualificationType.stream().forEach(System.out::println);
+        List<Driver> driversSortedByQualificationType = DriverDAO.sortByQualificationType();
+        System.out.println("---------  Drivers sorted by qualification type ----------");
+        driversSortedByQualificationType.stream().forEach(System.out::println);
 
-//        List<Driver> driversSortedBySalary = DriverDAO.sortBySalary();
-//        driversSortedBySalary.stream().forEach(System.out::println);
+        List<Driver> driversSortedBySalary = DriverDAO.sortBySalary();
+        System.out.println("---------  Drivers filtered by salary ----------");
+        driversSortedBySalary.stream().forEach(System.out::println);
 
 //        Company company1 = CompanyDAO.getCompany(1);
 //        Vehicle vehicle1 = new Vehicle(Vehicle.VehicleType.BUS, company1);
@@ -149,32 +159,36 @@ public class Main {
 //
 //        TransportationDAO.saveOrUpdateTransportation(transportation2);
 
-//        List<Transportation> transportationsFilteredByEndPoint = TransportationDAO.filterByEndPoint("London");
-//        transportationsFilteredByEndPoint.stream().forEach(System.out::println);
+        List<Transportation> transportationsFilteredByEndPoint = TransportationDAO.filterByEndPoint("London");
+        System.out.println("---------  Transportations filtered by end point ----------");
+        transportationsFilteredByEndPoint.stream().forEach(System.out::println);
 
-//        List<Transportation> transportationsSortedByEndPoint = TransportationDAO.sortByEndPoint();
-//        transportationsSortedByEndPoint.stream().forEach(System.out::println);
+        List<Transportation> transportationsSortedByEndPoint = TransportationDAO.sortByEndPoint();
+        System.out.println("---------  Transportations sorted by end point ----------");
+        transportationsSortedByEndPoint.stream().forEach(System.out::println);
 
-//        Company company = CompanyDAO.getCompany(8);
-//        List<Transportation> transportationsForCompany = TransportationDAO.getTransportationsForCompany(company);
-//        transportationsForCompany.stream().forEach(System.out::println);
-//        if (company!= null) {
-//            System.out.println("Number of transportations for company with id " + company.getId() + " : " + transportationsForCompany.size());
-//        }
+        Company company = CompanyDAO.getCompany(8);
+        List<Transportation> transportationsForCompany = TransportationDAO.getTransportationsForCompany(company);
+        System.out.println("---------  Transportations for company " + company.getName() + " ----------");
+        transportationsForCompany.stream().forEach(System.out::println);
+        if (company!= null) {
+            System.out.println("Number of transportations for company with id " + company.getId() + " : " + transportationsForCompany.size());
+        }
 
-//        Company company = CompanyDAO.getCompany(8);
-//        LocalDateTime fromDate = LocalDateTime.of(2022, 1,10,16,27,8);
-//        LocalDateTime toDate = LocalDateTime.of(2022, 1,10,17,0,8);
+        //Company company1 = CompanyDAO.getCompany(8);
+        LocalDateTime fromDate = LocalDateTime.of(2022, 1,10,16,27,8);
+        LocalDateTime toDate = LocalDateTime.of(2022, 1,10,17,0,8);
 //
-//        List<Transportation> transportationsForCompanyFromDateToDate =
-//                TransportationDAO.getTransportationsForCompanyFromDateToDate(company,fromDate, toDate );
-//        transportationsForCompanyFromDateToDate.stream().forEach(System.out::println);
+        List<Transportation> transportationsForCompanyFromDateToDate =
+                TransportationDAO.getTransportationsForCompanyFromDateToDate(company,fromDate, toDate );
+        System.out.println("---------  Transportations for company "+ company.getName() + " from " +fromDate +" to "+ toDate + " ----------");
+        transportationsForCompanyFromDateToDate.stream().forEach(System.out::println);
 
-        //System.out.println(CompanyDAO.getIncomeFromDateToDate(company, fromDate, toDate));
+        System.out.println("---------  Income from "+ fromDate +" to "+toDate +" for " + company.getName() + " ----------");
+        System.out.println(CompanyDAO.getIncomeFromDateToDate(company, fromDate, toDate));
 
-//        Company company = CompanyDAO.getCompany(8);
-//        System.out.println(CompanyDAO.getIncomeFromTransportations(company));
-
-
+       // Company company = CompanyDAO.getCompany(8);
+        System.out.println("---------  Income from transportations for " + company.getName() + " ----------");
+        System.out.println(CompanyDAO.getIncomeFromTransportations(company));
     }
 }

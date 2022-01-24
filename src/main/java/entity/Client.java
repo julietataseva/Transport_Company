@@ -8,6 +8,7 @@ import java.util.Set;
 @Table(name = "client")
 public class Client {
     @Id
+    @Column(name = "id", updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

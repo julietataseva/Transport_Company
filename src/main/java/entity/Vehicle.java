@@ -7,6 +7,7 @@ import java.util.List;
 @Table(name = "vehicle")
 public class Vehicle {
     @Id
+    @Column(name = "id", updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

@@ -15,6 +15,11 @@ dependencies {
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.10.Final'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.1.2.Final'
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator-annotation-processor', version: '6.1.2.Final'
+    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    compile group: 'org.glassfish', name: 'javax.el', version: '3.0.0'
 }
 
 test {

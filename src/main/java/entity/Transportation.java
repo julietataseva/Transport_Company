@@ -1,16 +1,18 @@
 package entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
-import java.util.TreeSet;
 
 @Entity
 @Table(name = "transportation")
 public class Transportation {
     @Id
+    @Column(name = "id", updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -29,9 +31,11 @@ public class Transportation {
     @Column(name = "transportation_type", nullable = false)
     private TransportationType transportationType;
 
+    @Positive
     @Column(name = "weight")
     private BigDecimal weight;
 
+    @Positive
     @Column(name = "price")
     private BigDecimal price;
 
@@ -188,5 +192,18 @@ public class Transportation {
                 ", driver=" + driver +
                 ", vehicle=" + vehicle +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transportation that = (Transportation) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

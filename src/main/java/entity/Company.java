@@ -1,6 +1,10 @@
 package entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -8,12 +12,17 @@ import java.util.List;
 @Table(name = "company")
 public class Company {
     @Id
+    @Column(name = "id", updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank(message = "Company name cannot be blank!")
+    @Size(max = 25, message = "Company name has to be maximum 25 characters!")
+    @Pattern(regexp = "^([A-Z]).*", message = "Company name has to start with capital letter!")
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Positive
     @Column(name = "income", nullable = false)
     private BigDecimal income;
 

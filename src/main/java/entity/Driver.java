@@ -1,13 +1,16 @@
 package entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "driver")
 public class Driver {
     @Id
+    @Column(name = "id", updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -17,6 +20,7 @@ public class Driver {
     @Column(name = "qualification_type", nullable = false)
     private QualificationType qualificationType;
 
+    @Positive
     @Column(name = "salary", nullable = false)
     private BigDecimal salary;
 
@@ -90,5 +94,18 @@ public class Driver {
                 ", salary=" + salary +
                 ", company=" + company +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return id == driver.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
